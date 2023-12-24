@@ -8,13 +8,16 @@ export default function Blogs() {
     const {posts,loading} = useContext(AppContext)
 
     return (
-        <div className="w-11/12 flex flex-col gap-y-7 max-w-[670px] mt-[100px] mb-[90px] justify-center items-center">
+        <div className="w-11/12 flex flex-col gap-y-7 max-w-[670px] mt-[100px] mb-[90px] justify-center items-center border-black ml-[422px]">
             {
                 loading ? 
                     <Spinner/> : (
                         posts.length === 0 ? 
                             <div><p>Not found</p></div> :
-                            <Card/>
+            
+                                posts.map( (post) => {
+                                    return  <Card key={post.id} post={post}/>
+                                })
                         )
             }
         </div>
